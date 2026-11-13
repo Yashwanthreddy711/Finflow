@@ -60,5 +60,25 @@ import java.util.Map;
             ApiErrorResponse apiErrorResponse=new ApiErrorResponse(409,e.getMessage());
             return ResponseEntity.status(HttpStatus.CONFLICT).body(apiErrorResponse);
         }
+        @ExceptionHandler(BeneficiaryAccountNotFoundException.class)
+        public ResponseEntity<?>hanldleBeneficiaryAccountNotFounfException(BeneficiaryAccountNotFoundException e){
+            ApiErrorResponse apiErrorResponse = new ApiErrorResponse(404,e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiErrorResponse);
+        }
+        @ExceptionHandler(DuplicateAccountFoundException.class)
+        public ResponseEntity<?>handleDuplicateAccountFoundException(DuplicateAccountFoundException e){
+            ApiErrorResponse apiErrorResponse=new ApiErrorResponse(409,e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(apiErrorResponse);
+        }
+        @ExceptionHandler(TransactionInProcessException.class)
+        public ResponseEntity<?>handleTransactionInprocessException(TransactionInProcessException e){
+            ApiErrorResponse apiErrorResponse=new ApiErrorResponse(409,e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(apiErrorResponse);
+        }
+        @ExceptionHandler(TransactionFailedException.class)
+        public ResponseEntity<?>handleTransactionFailedException(TransactionFailedException e){
+            ApiErrorResponse apiErrorResponse=new ApiErrorResponse(409,e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(apiErrorResponse);
+        }
 
     }

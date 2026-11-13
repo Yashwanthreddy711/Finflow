@@ -2,6 +2,7 @@ package com.finflow.beneficiary.controller;
 
 import com.finflow.beneficiary.dto.BeneficiaryRequest;
 import com.finflow.beneficiary.dto.BeneficiaryResponse;
+import com.finflow.beneficiary.dto.DeactivateBeneficiaryRequest;
 import com.finflow.beneficiary.service.BeneficiaryService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -24,5 +25,10 @@ public class BeneficiaryController {
     public ResponseEntity<BeneficiaryResponse>addBeneficiary(@RequestBody @Valid BeneficiaryRequest beneficiaryRequest){
         BeneficiaryResponse beneficiaryResponse = beneficiaryService.addBeneficiary(beneficiaryRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(beneficiaryResponse);
+    }
+    @PatchMapping("/deactivate")
+    public ResponseEntity<String>deactivateBeneficiary(@RequestBody DeactivateBeneficiaryRequest deactivateBeneficiaryRequest){
+        String response = beneficiaryService.deactivateBeneficiary(deactivateBeneficiaryRequest);
+        return ResponseEntity.ok(response);
     }
 }
